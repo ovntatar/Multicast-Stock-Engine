@@ -45,6 +45,8 @@ You can also look for information at:
 
 =item GitHub request tracker (report bugs here)
 
+	https://github.com/ovntatar/MuticastStockEngine/issues
+
 =back
 
 =head1 LICENSE AND COPYRIGHT
