@@ -6,7 +6,7 @@ MulticastStockServer
 
 =head1 DESCRIPTION
 
-The multicast stock server provide yahoo stock information in local network.
+The multicast stock server provide yahoo stock information to the local network.
 All multicast pakages will encrypted.
 
 =head1 VERSION
@@ -28,10 +28,10 @@ You can start the server by running:
 	% perl MulticastStockServer.pl <PORT> <IP-ADDRESS> <TTL>
 
 
-=head1  STOCK CONDIFUGARION 
+=head1  STOCK CONFIGURATION
 
-Configuration can be changes by modify in Stock.ini. 
-For more information about the yahoo tag check FinanceTag.definition file. 
+Stock configuration can be change in the Stock.ini file. 
+For more information about the yahoo tag check FinanceTag.definition file.
 
 
 =head1 SUPPORT
