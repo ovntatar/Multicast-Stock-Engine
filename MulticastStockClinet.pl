@@ -5,8 +5,8 @@ MulticastStockClient
 
 =head1 DESCRIPTION
 
-The multicast stock client receive infomration from the MulticastStockServer.
-All multicast pakages and encrypted end will be decrypted by the client.
+The multicast stock client receive information from the MulticastStockServer.
+All multicast packages will decrypted by the client.
 
 =head1 VERSION
 
@@ -27,10 +27,10 @@ You can start the server by running:
 	% perl MulticastStockClient.pl <PORT> <IP-ADDRESS> 
 
 
-=head1  STOCK CONDIFUGARION 
+=head1  STOCK CONFIGURATION
 
-Configuration can be changes by modify in Stock.ini. 
-For more information about the yahoo tag check FinanceTag.definition file. 
+Stock configuration can be change in the Stock.ini file. 
+For more information about the yahoo tag check FinanceTag.definition file.
 
 
 =head1 SUPPORT
