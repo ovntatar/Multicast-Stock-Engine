@@ -1,5 +1,38 @@
 #!/usr/bin/perl
 
+use warnings;
+use strict;
+
+use IO::Socket;
+use IO::Socket::Multicast;
+use LWP::Simple;
+use Crypt::Tea;
+use Config::Tiny;
+
+my $port = shift || 5995;
+my $addr = shift || '224.0.0.1';
+my $ttl  = shift || 10;
+
+
+my $sock = IO::Socket::Multicast->new() or die "Can't create socket: $!";
+$sock->mcast_ttl($ttl) or die "Can't set ttl: $!";
+my $dest = sockaddr_in($port,inet_aton($addr));
+
+while (1) {
+
+    my $cfg=Config::Tiny->read("Stock.ini");
+    my $fin = $cfg-> {finance_tag}-> {fin};
+    my $synbol = $cfg-> {synbol}-> {synbol};
+
+    my $url="http://download.finance.yahoo.com/d/quotes.csv?s=$synbol&f=$fin";
+    my $message = LWP::Simple::get($url);
+
+    my $ciphertext = encrypt($message,"sdcfseghb");;
+    send ($sock,$ciphertext,0,$dest) || die "couldn't send: $!";
+}
+
+__END__
+
 =head1 NAME
 
 MulticastStockServer
@@ -61,34 +94,3 @@ by the Free Software Foundation; or the Artistic License.
 See http://dev.perl.org/licenses/ for more information.
 
 =cut
-
-use warnings;
-use strict;
-
-use IO::Socket;
-use IO::Socket::Multicast;
-use LWP::Simple;
-use Crypt::Tea;
-use Config::Tiny;
-
-my $port = shift || 5995;
-my $addr = shift || '224.0.0.1';
-my $ttl  = shift || 10;
-
-
-my $sock = IO::Socket::Multicast->new() or die "Can't create socket: $!";
-$sock->mcast_ttl($ttl) or die "Can't set ttl: $!";
-my $dest = sockaddr_in($port,inet_aton($addr));
-
-while (1) {
-
-    my $cfg=Config::Tiny->read("Stock.ini");
-    my $fin = $cfg-> {finance_tag}-> {fin};
-    my $synbol = $cfg-> {synbol}-> {synbol};
-
-    my $url="http://download.finance.yahoo.com/d/quotes.csv?s=$synbol&f=$fin";
-    my $message = LWP::Simple::get($url);
-
-    my $ciphertext = encrypt($message,"sdcfseghb");;
-    send ($sock,$ciphertext,0,$dest) || die "couldn't send: $!";
-}

@@ -1,4 +1,29 @@
 #!/usr/bin/perl
+
+use warnings;
+use strict;
+
+use IO::Socket;
+use IO::Socket::Multicast;
+use Crypt::Tea;
+
+my $port = shift || 5995;
+my $addr = shift || '224.0.0.1';
+
+my $sock = IO::Socket::Multicast->new(LocalPort=>$port) or die "Can't create socket: $!";
+
+
+$sock->mcast_add($addr) or die "multicast_add: $!";
+while (1) {
+  my ($response,$peer);
+  die "receive error: $!" unless $peer = recv($sock,$response,1024,0);
+  my ($port,$peeraddr) = sockaddr_in($peer);
+	my $plaintext = decrypt($response,"sdcfseghb");;
+	print "$plaintext" . "\n";
+}
+
+__END__
+
 =head1 NAME
 
 MulticastStockClient
@@ -62,24 +87,3 @@ See http://dev.perl.org/licenses/ for more information.
 =cut
 
 
-use warnings;
-use strict;
-
-use IO::Socket;
-use IO::Socket::Multicast;
-use Crypt::Tea;
-
-my $port = shift || 5995;
-my $addr = shift || '224.0.0.1';
-
-my $sock = IO::Socket::Multicast->new(LocalPort=>$port) or die "Can't create socket: $!";
-
-
-$sock->mcast_add($addr) or die "multicast_add: $!";
-while (1) {
-  my ($response,$peer);
-  die "receive error: $!" unless $peer = recv($sock,$response,1024,0);
-  my ($port,$peeraddr) = sockaddr_in($peer);
-	my $plaintext = decrypt($response,"sdcfseghb");;
-	print "$plaintext" . "\n";
-}
