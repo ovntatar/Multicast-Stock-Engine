@@ -21,7 +21,7 @@ or the client by running:
 
 STOCK CONDIFUGARION 
 
-Configuration can be changes by modify in Stock.ini. 
+Configuration can be changes by modify the Stock.ini file. 
 For more information about the yahoo tag check FinanceTag.definition file. 
 
 SUPPORT
