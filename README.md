@@ -28,7 +28,7 @@ SUPPORT
 
 You can find documentation for this module with the perldoc command.
 
-	% perldoc MulticastStockServer
+	% perldoc MulticastStockServer.pl
 
 You can also look for information at:
 
