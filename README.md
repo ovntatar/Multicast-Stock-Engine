@@ -3,7 +3,7 @@ MuticastStockEngine
 
 
 The multicast stock Engine provide yahoo stock information to the local network.
-All multicast pakages will encrypted by the server and decpryted by the client!
+All multicast packages will encrypted by the server and decpryted by the client!
 
 VERSION
 
@@ -13,7 +13,7 @@ SYNOPSIS
 
 You can start the server by running: 
 
-      % perl MulticastStockServer.pl 
+	% perl MulticastStockServer.pl 
 
 to use client run:
 
