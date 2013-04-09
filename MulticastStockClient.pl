@@ -37,7 +37,7 @@ For more information about the yahoo tag check FinanceTag.definition file.
 
 You can find documentation for this module with the perldoc command.
 
-	% perldoc MulticastStockClient
+	% perldoc MulticastStockClient.pl
 
 You can also look for information at:
 
