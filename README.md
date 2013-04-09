@@ -15,13 +15,13 @@ You can start the server by running:
 
       % perl MulticastStockServer.pl 
 
-or the client by running:
+to use client run:
 
 	% perl MulticastStockClient.pl
 
-STOCK CONDIFUGARION 
+STOCK CONFIGURATION 
 
-Configuration can be changes by modify the Stock.ini file. 
+Stock configuration can be change in the Stock.ini file. 
 For more information about the yahoo tag check FinanceTag.definition file. 
 
 SUPPORT
