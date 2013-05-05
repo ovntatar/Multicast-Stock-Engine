@@ -3,7 +3,7 @@ MulticastStockEngine
 
 
 The multicast stock Engine provide yahoo stock information to the local network.
-All multicast packages will encrypted by the server and decpryted by the client!
+All multicast packages will encrypted by the server and decrypted by the client!
 
 VERSION
 
