@@ -13,7 +13,6 @@ my $port = shift || 5995;
 my $addr = shift || '224.0.0.1';
 my $ttl  = shift || 10;
 
-
 my $sock = IO::Socket::Multicast->new() or die "Can't create socket: $!";
 $sock->mcast_ttl($ttl) or die "Can't set ttl: $!";
 my $dest = sockaddr_in($port,inet_aton($addr));
